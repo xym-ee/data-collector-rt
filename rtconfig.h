@@ -83,7 +83,10 @@
 #define RT_USING_SERIAL_V1
 #define RT_SERIAL_USING_DMA
 #define RT_SERIAL_RB_BUFSZ 64
+#define RT_USING_I2C
+#define RT_USING_I2C_BITOPS
 #define RT_USING_PIN
+#define RT_USING_ADC
 #define RT_USING_SPI
 
 /* Using USB */
@@ -116,9 +119,6 @@
 #define NETDEV_IPV6 0
 
 /* Utilities */
-
-
-/* RT-Thread Utestcases */
 
 
 /* RT-Thread online packages */
@@ -234,6 +234,14 @@
 #define BSP_USING_UART6
 #define BSP_USING_SPI
 #define BSP_USING_SPI2
+#define BSP_USING_ADC
+#define BSP_USING_ADC1
+#define BSP_USING_I2C3
+
+/* Notice: PA8 --> 21; PC9 --> 20 */
+
+#define BSP_I2C3_SCL_PIN 8
+#define BSP_I2C3_SDA_PIN 41
 
 /* Board extended module Drivers */
 
