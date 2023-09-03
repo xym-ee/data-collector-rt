@@ -48,7 +48,7 @@ static void udpclient_thread_entry(void *parameter)
         
         send_data[4] = status.power.voltage_24v;                    /* 24V */
         send_data[5] = status.power.voltage_led_18v;                /* 18V */
-        send_data[6] = status.power.voltage_cam_12v;                /* CAM12V */
+        send_data[6] = status.power.voltage_pc_12v;                /* CAM12V */
         send_data[7] = status.power.voltage_cam_12v;                /* PC12V */
         send_data[8] = status.power.voltage_5v;                     /* 5V */
         send_data[9] = 0;                   
@@ -60,9 +60,54 @@ static void udpclient_thread_entry(void *parameter)
         sendto(sock, send_data, 13, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));
 
         
+        /*----------------------------------  电源与灯光开启状态上报 --------------------------------*/
+        send_data[2] = SMSG_ID_OPEN_STATUS;     /* 发送消息ID   */
+        send_data[3] = 8;                       /* 发送数据长度 */
+        
+        send_data[4] = status.power.out_24v_en;                     
+        send_data[5] = (status.power.pc_12v_en<<1) | status.power.cam_12v_en;
+        send_data[6] = (status.power.iic_5v_en2<<6) | 
+                       (status.power.iic_5v_en1<<5) |
+                       (status.power.ser_5v_en5<<4) |
+                       (status.power.ser_5v_en4<<3) |
+                       (status.power.ser_5v_en3<<2) |
+                       (status.power.ser_5v_en2<<1) |
+                       (status.power.ser_5v_en1<<0) ;
+        send_data[7] = (status.light.light7<<7) | 
+                       (status.light.light6<<6) | 
+                       (status.light.light5<<5) | 
+                       (status.light.light4<<4) | 
+                       (status.light.light3<<3) | 
+                       (status.light.light2<<2) | 
+                       (status.light.light1<<1) | 
+                       (status.light.light0<<0) ; 
+        send_data[8] = 0;                    
+        send_data[9] = 0;                   
+        send_data[10] = 0;
+        send_data[11] = 0;
+        
+        send_data[12] = sum_check(send_data, 12);
+        
+        sendto(sock, send_data, 13, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));
         
         
         
+        /*----------------------------------  温度上报 --------------------------------*/
+        send_data[2] = SMSG_ID_TEMP;            /* 发送消息ID   */
+        send_data[3] = 8;                       /* 发送数据长度 */
+        
+        send_data[4] = status.sensor.temp & 0xff;                     
+        send_data[5] = (status.sensor.temp>>8)& 0xff;
+        send_data[6] = 0;
+        send_data[7] = 0; 
+        send_data[8] = 0;                    
+        send_data[9] = 0;                   
+        send_data[10] = 0;
+        send_data[11] = 0;
+        
+        send_data[12] = sum_check(send_data, 12);
+        
+        sendto(sock, send_data, 13, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));        
         
         
         

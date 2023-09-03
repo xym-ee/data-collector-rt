@@ -227,10 +227,12 @@
 #define BSP_USING_GPIO
 #define BSP_USING_UART
 #define BSP_USING_UART1
+#define BSP_UART1_RX_USING_DMA
 #define BSP_USING_UART2
 #define BSP_USING_UART3
 #define BSP_USING_UART4
 #define BSP_USING_UART5
+#define BSP_UART5_RX_USING_DMA
 #define BSP_USING_UART6
 #define BSP_USING_SPI
 #define BSP_USING_SPI2
@@ -238,7 +240,7 @@
 #define BSP_USING_ADC1
 #define BSP_USING_I2C3
 
-/* Notice: PA8 --> 21; PC9 --> 20 */
+/* Notice: PA8 --> 8; PC9 --> 41 */
 
 #define BSP_I2C3_SCL_PIN 8
 #define BSP_I2C3_SDA_PIN 41

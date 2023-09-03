@@ -11,6 +11,8 @@ static void power_thread_entry(void *parameter)
 {
     /*----------------------- 电源开关引脚配置 ------------------*/
     rt_pin_mode(OUT_24V_EN_PIN, PIN_MODE_OUTPUT);
+    rt_pin_mode(PC__12V_EN_PIN, PIN_MODE_OUTPUT);
+    rt_pin_mode(CAM_12V_EN_PIN, PIN_MODE_OUTPUT);
     rt_pin_mode(SER_5V_EN1_PIN, PIN_MODE_OUTPUT);
     rt_pin_mode(SER_5V_EN2_PIN, PIN_MODE_OUTPUT);
     rt_pin_mode(SER_5V_EN3_PIN, PIN_MODE_OUTPUT);
@@ -18,10 +20,11 @@ static void power_thread_entry(void *parameter)
     rt_pin_mode(SER_5V_EN5_PIN, PIN_MODE_OUTPUT);
     rt_pin_mode(IIC_5V_EN1_PIN, PIN_MODE_OUTPUT);
     rt_pin_mode(IIC_5V_EN2_PIN, PIN_MODE_OUTPUT);
-    rt_pin_mode(PC__12V_EN_PIN, PIN_MODE_OUTPUT);
-    rt_pin_mode(CAM_12V_EN_PIN, PIN_MODE_OUTPUT);
+
     
     rt_pin_write(OUT_24V_EN_PIN, PIN_LOW);
+    rt_pin_write(PC__12V_EN_PIN, PIN_LOW);
+    rt_pin_write(CAM_12V_EN_PIN, PIN_LOW);
     rt_pin_write(SER_5V_EN1_PIN, PIN_LOW);
     rt_pin_write(SER_5V_EN2_PIN, PIN_LOW);
     rt_pin_write(SER_5V_EN3_PIN, PIN_LOW);
@@ -29,9 +32,7 @@ static void power_thread_entry(void *parameter)
     rt_pin_write(SER_5V_EN5_PIN, PIN_LOW);
     rt_pin_write(IIC_5V_EN1_PIN, PIN_LOW);
     rt_pin_write(IIC_5V_EN2_PIN, PIN_LOW);
-    rt_pin_write(PC__12V_EN_PIN, PIN_LOW);
-    rt_pin_write(CAM_12V_EN_PIN, PIN_LOW);
-    
+
     
     /*---------------------------- 电压检测硬件配置 ---------*/
     rt_adc_device_t adc_dev;
@@ -60,10 +61,57 @@ static void power_thread_entry(void *parameter)
         else
             rt_pin_write(OUT_24V_EN_PIN, PIN_LOW);
             
+        /* 12V */
         
+        if (status.power.pc_12v_en == POWER_ON)
+            rt_pin_write(PC__12V_EN_PIN, PIN_HIGH);
+        else
+            rt_pin_write(PC__12V_EN_PIN, PIN_LOW);
         
+        if (status.power.cam_12v_en == POWER_ON)
+            rt_pin_write(CAM_12V_EN_PIN, PIN_HIGH);
+        else
+            rt_pin_write(CAM_12V_EN_PIN, PIN_LOW);
+           
+        /* SER_5V */
         
+        if (status.power.ser_5v_en1 == POWER_ON)
+            rt_pin_write(SER_5V_EN1_PIN, PIN_HIGH);
+        else
+            rt_pin_write(SER_5V_EN1_PIN, PIN_LOW);
         
+        if (status.power.ser_5v_en2 == POWER_ON)
+            rt_pin_write(SER_5V_EN2_PIN, PIN_HIGH);
+        else
+            rt_pin_write(SER_5V_EN2_PIN, PIN_LOW);        
+        
+         if (status.power.ser_5v_en3 == POWER_ON)
+            rt_pin_write(SER_5V_EN3_PIN, PIN_HIGH);
+        else
+            rt_pin_write(SER_5V_EN3_PIN, PIN_LOW);       
+        
+        if (status.power.ser_5v_en4 == POWER_ON)
+            rt_pin_write(SER_5V_EN4_PIN, PIN_HIGH);
+        else
+            rt_pin_write(SER_5V_EN4_PIN, PIN_LOW);        
+        
+        if (status.power.ser_5v_en5 == POWER_ON)
+            rt_pin_write(SER_5V_EN5_PIN, PIN_HIGH);
+        else
+            rt_pin_write(SER_5V_EN5_PIN, PIN_LOW);        
+            
+        /* IIC_5V */
+        
+        if (status.power.iic_5v_en1 == POWER_ON)
+            rt_pin_write(IIC_5V_EN1_PIN, PIN_HIGH);
+        else
+            rt_pin_write(IIC_5V_EN1_PIN, PIN_LOW);
+
+        if (status.power.iic_5v_en2 == POWER_ON)
+            rt_pin_write(IIC_5V_EN2_PIN, PIN_HIGH);
+        else
+            rt_pin_write(IIC_5V_EN2_PIN, PIN_LOW);
+
         
         /*------------------------------- 电压检测 ---------------------------------*/
 

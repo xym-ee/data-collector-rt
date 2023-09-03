@@ -17,6 +17,8 @@
 /*---------------------------------------- GPIO相关 --------------------------------------------*/
 
 #define OUT_24V_EN_PIN          GET_PIN(D, 10)
+#define PC__12V_EN_PIN          GET_PIN(E, 15)
+#define CAM_12V_EN_PIN          GET_PIN(E, 14)
 #define SER_5V_EN1_PIN          GET_PIN(D, 4)
 #define SER_5V_EN2_PIN          GET_PIN(D, 3)
 #define SER_5V_EN3_PIN          GET_PIN(D, 1)
@@ -24,8 +26,7 @@
 #define SER_5V_EN5_PIN          GET_PIN(A, 15)
 #define IIC_5V_EN1_PIN          GET_PIN(C, 8)
 #define IIC_5V_EN2_PIN          GET_PIN(D, 15)
-#define PC__12V_EN_PIN          GET_PIN(E, 15)
-#define CAM_12V_EN_PIN          GET_PIN(E, 14)
+
 
 //  5V       PIN_HIGH 开启输出
 //  PC12V，  PIN_HIGH 开启输出

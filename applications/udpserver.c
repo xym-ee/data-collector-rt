@@ -93,7 +93,7 @@ static void udpserver_thread_entry(void *parameter)
                 {
                     /* 传入第一个数据的起始地址 */
                     case RMSG_ID_POWER : rmsg_power_handle((rt_uint8_t*)(&recv_data[4])); break;
-                    case RMSG_ID_LIGHT : rmsg_lighr_handle((rt_uint8_t*)(&recv_data[5])); break;
+                    case RMSG_ID_LIGHT : rmsg_lighr_handle((rt_uint8_t*)(&recv_data[4])); break;
                     default : ; break;
                 }
             }
@@ -110,12 +110,6 @@ static void udpserver_thread_entry(void *parameter)
         }
         
         
-        
-        
-//        /* UDP不同于TCP，它基本不会出现收取的数据失败的情况，除非设置了超时等待 */
-//        recv_data[bytes_read] = '\0'; /* 把末端清零 */
-//        
-
         rt_kprintf("recive: ");
         for (int i=0; i<bytes_read; i++)
             rt_kprintf("%02x ", recv_data[i]);
@@ -167,12 +161,11 @@ INIT_APP_EXPORT(udpserver_init);
 static void rmsg_power_handle(rt_uint8_t *data)
 {
     
-    rt_kprintf("handle: ");
-    for (int i=0; i<4; i++)
-        rt_kprintf("%02x ", data[i]);
-    rt_kprintf("\n");    
-    
-    
+//    rt_kprintf("handle: ");
+//    for (int i=0; i<4; i++)
+//        rt_kprintf("%02x ", data[i]);
+//    rt_kprintf("\n");    
+
     /*--------------------- 24V 状态更新 ----------------------*/
     switch (data[0]) /* byte1 */
     {
@@ -184,22 +177,22 @@ static void rmsg_power_handle(rt_uint8_t *data)
     /*--------------------- 12V 状态更新 ----------------------*/
     switch(data[1]) /* byte2 */
     {
-        case 0x00 : /*0b00*/ rt_kprintf("12v case 00\n");
+        case 0x00 : /*0b00*/ //rt_kprintf("12v case 00\n");
             status.power.pc_12v_en = POWER_OFF;
             status.power.cam_12v_en = POWER_OFF;
             break;
         
-        case 0x01 : /*0b01*/rt_kprintf("12v case 01\n");
+        case 0x01 : /*0b01*/ //rt_kprintf("12v case 01\n");
             status.power.pc_12v_en = POWER_OFF;
             status.power.cam_12v_en = POWER_ON;
             break;
         
-        case 0x02 : /*0b10*/rt_kprintf("12v case 02\n");
+        case 0x02 : /*0b10*/ //rt_kprintf("12v case 02\n");
             status.power.pc_12v_en = POWER_ON;
             status.power.cam_12v_en = POWER_OFF;
             break;
         
-        case 0x03 : /*0b11*/rt_kprintf("12v case 03\n");
+        case 0x03 : /*0b11*/ //rt_kprintf("12v case 03\n");
             status.power.pc_12v_en = POWER_ON;
             status.power.cam_12v_en = POWER_ON;
             break;
@@ -210,7 +203,7 @@ static void rmsg_power_handle(rt_uint8_t *data)
     /*--------------------- 5V 状态更新 ----------------------*/
     for (int i=0; i<8; i++)
     {
-        if (((data[3] >> i)&0x01) == 1)
+        if (((data[2] >> i)&0x01) == 1)
             *(&status.power.ser_5v_en1 + i) = POWER_ON;
         else
             *(&status.power.ser_5v_en1 + i) = POWER_OFF;
@@ -220,6 +213,12 @@ static void rmsg_power_handle(rt_uint8_t *data)
 
 static void rmsg_lighr_handle(rt_uint8_t *data)
 {
+    
+    rt_kprintf("handle: ");
+    for (int i=0; i<4; i++)
+        rt_kprintf("%02x ", data[i]);
+    rt_kprintf("\n");
+    
     /* 亮度状态 */
     switch (data[0])
     {
@@ -237,6 +236,5 @@ static void rmsg_lighr_handle(rt_uint8_t *data)
             *(&status.light.light0 + i) = LIGHT_ON;
         else
             *(&status.light.light0 + i) = LIGHT_OFF;
-    }    
-    
+    }
 }

@@ -327,7 +327,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
-            <uGnu>0</uGnu>
+            <uGnu>1</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -418,6 +418,16 @@
               <FileName>iic_dev.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\applications\iic_dev.c</FilePath>
+            </File>
+            <File>
+              <FileName>sensor_gas.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\sensor_gas.c</FilePath>
+            </File>
+            <File>
+              <FileName>README.md</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\README.md</FilePath>
             </File>
           </Files>
         </Group>

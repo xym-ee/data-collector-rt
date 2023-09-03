@@ -25,7 +25,7 @@
 #define     LIGHT_L6_PIN            GET_PIN(C, 5)
 #define     LIGHT_L7_PIN            GET_PIN(C, 4)
 
-#define     LIGHT_PROTECT_PIN
+#define     LIGHT_PROTECT_PIN       GET_PIN(C, 3)
 
 
 #endif

@@ -17,6 +17,7 @@ typedef struct {
     power_status_t out_24v_en;
     power_status_t pc_12v_en;
     power_status_t cam_12v_en;
+    
     power_status_t ser_5v_en1;
     power_status_t ser_5v_en2;    
     power_status_t ser_5v_en3;    
@@ -71,6 +72,7 @@ typedef struct {
 
 typedef struct {
     rt_int16_t temp;
+    rt_uint16_t gas;
 
 
 } seneor_t;
