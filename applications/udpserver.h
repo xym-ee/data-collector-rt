@@ -17,5 +17,13 @@
 #define     UDPSERVER_THREAD_TIMESLICE    10
 
 
+typedef enum{
+    RMSG_IDDLE = 0,
+    RMSG_ID_POWER,
+    RMSG_ID_LIGHT,
+
+}recv_msg_id_t;
+
+
 
 #endif

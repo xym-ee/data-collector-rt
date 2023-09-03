@@ -1,13 +1,12 @@
 #include "udpclient.h"
 
-
-
 #include <rtthread.h>
 #include <sys/socket.h> /* 使用BSD socket，需要包含sockets.h头文件 */
 #include <netdb.h>
 #include <string.h>
 #include <finsh.h>
 
+#include "status.h"
 
 
 
@@ -18,13 +17,12 @@ static void udpclient_thread_entry(void *parameter)
 {
     rt_thread_mdelay(4000);
     
-    rt_uint8_t send_data[20] = {0x00, 0x11, 0x22, 0x33, 0x44, 0x55};
+    rt_uint8_t send_data[20] = {0x55, 0x55};
     
-    int sock, port;
+    int sock;
     struct hostent *host;
     struct sockaddr_in server_addr;
 
-    port = UDP_SERVER_PORT;
     host = (struct hostent *) gethostbyname(UDP_SERVER_IP);
 
     /* 创建一个socket，类型是SOCK_DGRAM，UDP类型 */
@@ -36,7 +34,7 @@ static void udpclient_thread_entry(void *parameter)
     
     /* 初始化预连接的服务端地址 */
     server_addr.sin_family = AF_INET;
-    server_addr.sin_port = htons(port);
+    server_addr.sin_port = htons(UDP_SERVER_PORT);
     server_addr.sin_addr = *((struct in_addr *)host->h_addr);
     rt_memset(&(server_addr.sin_zero), 0, sizeof(server_addr.sin_zero));
         
@@ -44,18 +42,37 @@ static void udpclient_thread_entry(void *parameter)
     while (1)
     {
         
+        /*----------------------------------  电压信息上报 --------------------------------*/
+        send_data[2] = SMSG_ID_VOLTAGE;     /* 发送消息ID   */
+        send_data[3] = 8;                   /* 发送数据长度 */
         
+        send_data[4] = status.power.voltage_24v;                    /* 24V */
+        send_data[5] = status.power.voltage_led_18v;                /* 18V */
+        send_data[6] = status.power.voltage_cam_12v;                /* CAM12V */
+        send_data[7] = status.power.voltage_cam_12v;                /* PC12V */
+        send_data[8] = status.power.voltage_5v;                     /* 5V */
+        send_data[9] = 0;                   
+        send_data[10] = 0;
+        send_data[11] = 0;
         
+        send_data[12] = sum_check(send_data, 12);
         
-        
-        /* 发送数据到服务远端 */
-        sendto(sock, send_data, 12, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));
+        sendto(sock, send_data, 13, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
         rt_thread_mdelay(1000);
     }
     
     /* 关闭这个socket */
-    closesocket(sock);    
+    //closesocket(sock);    
 }
 
 int udpclient_init(void)

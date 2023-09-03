@@ -17,6 +17,14 @@
 
 
 
+typedef enum{
+    SMSG_IDDLE = 0,
+    SMSG_ID_VOLTAGE,
+    SMSG_ID_STATUS,
+    SMSG_ID_DISTANCE,
+    SMSG_ID_GAS,
+
+}send_msg_id_t;
 
 
 
