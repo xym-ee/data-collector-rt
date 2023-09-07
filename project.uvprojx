@@ -429,6 +429,11 @@
               <FileType>5</FileType>
               <FilePath>.\README.md</FilePath>
             </File>
+            <File>
+              <FileName>sbus.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\sbus.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -6,6 +6,7 @@
 #include <string.h>
 #include <finsh.h>
 
+#include <netdev.h>
 
 #include "status.h"
 
@@ -20,7 +21,6 @@ static void rmsg_lighr_handle(rt_uint8_t *data);
 
 static void udpserver_thread_entry(void *parameter)
 {
-    
     rt_thread_mdelay(4000);
     
     
@@ -66,7 +66,7 @@ static void udpserver_thread_entry(void *parameter)
     }
     
     addr_len = sizeof(struct sockaddr);
-    rt_kprintf("UDPServer Waiting for client on port 5501...\n");
+    rt_kprintf("UDPServer Waiting for client on port 5500...\n");
     
     rt_uint8_t msg_length = 0;
     

@@ -64,6 +64,8 @@ static void gas1_rx_thread(void *parameter)
     rt_uint8_t rx_buffer[12];
     
     rt_uint8_t *byte = rx_buffer;
+    
+    rt_uint8_t data_count = 0;
  
     while (1)
     {
@@ -74,19 +76,29 @@ static void gas1_rx_thread(void *parameter)
         if (result == RT_EOK)
         {
             /* 从串口读取数据*/
-            rx_length = rt_device_read(msg.dev, 0, rx_buffer, msg.size);
+            rx_length = rt_device_read(msg.dev, 0, &rx_buffer[data_count], msg.size);
+            data_count = data_count + rx_length;
             
-            
-            for (int i=0; i<rx_length; i++)
+            if (byte[0] == 0xFF)
             {
-                rt_kprintf("%02x ", rx_buffer[i]);
+                if (data_count >= 10) 
+                {
+                    status.sensor.gas =  (byte[4]<<8 | byte[5]);
+                    
+                    for (int i=0; i<data_count; i++)
+                    {
+                        rt_kprintf("%02x ", rx_buffer[i]);
+                    }
+                    rt_kprintf("\n");
+
+                    
+                    data_count = 0;
+                }
             }
-            rt_kprintf("\n");
-            
-            if (rx_length == 10)
+            else
             {
-                status.sensor.gas =  (byte[4]<<8 | byte[5]);
-            }         
+                data_count = 0;
+            }
         }
     }
 }

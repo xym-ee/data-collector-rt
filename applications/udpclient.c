@@ -15,7 +15,7 @@
 
 static void udpclient_thread_entry(void *parameter)
 {
-    rt_thread_mdelay(4000);
+    rt_thread_mdelay(10000);
     
     rt_uint8_t send_data[20] = {0x55, 0x55};
     

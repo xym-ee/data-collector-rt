@@ -7,8 +7,8 @@
 #include <board.h>
 
 
-#define UDP_SERVER_IP       "10.0.0.9"
-#define UDP_SERVER_PORT     5500
+#define UDP_SERVER_IP       "10.0.0.10"
+#define UDP_SERVER_PORT     5501
 
 
 #define     UDPCLIENT_THREAD_STACK_SIZE   2048

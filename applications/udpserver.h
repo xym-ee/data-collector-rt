@@ -11,6 +11,8 @@
 #define UDP_RECIVE_PORT     5501
 
 
+#define NETDEV_NAME "W5500"
+
 
 #define     UDPSERVER_THREAD_STACK_SIZE   2048
 #define     UDPSERVER_THREAD_PRIORITY     16
