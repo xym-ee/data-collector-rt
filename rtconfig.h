@@ -144,7 +144,12 @@
 #define WIZ_SPI_DEVICE "spi20"
 #define WIZ_RST_PIN 56
 #define WIZ_IRQ_PIN 57
-#define WIZ_USING_DHCP
+
+/* WIZnet network configure */
+
+#define WIZ_IPADDR "10.0.0.55"
+#define WIZ_GWADDR "10.0.0.1"
+#define WIZ_MSKADDR "255.255.255.0"
 #define WIZ_USING_PING
 #define PKG_USING_WIZNET_LATEST_VERSION
 
@@ -229,8 +234,11 @@
 #define BSP_USING_UART1
 #define BSP_UART1_RX_USING_DMA
 #define BSP_USING_UART2
+#define BSP_UART2_RX_USING_DMA
 #define BSP_USING_UART3
+#define BSP_UART3_RX_USING_DMA
 #define BSP_USING_UART4
+#define BSP_UART4_RX_USING_DMA
 #define BSP_USING_UART5
 #define BSP_UART5_RX_USING_DMA
 #define BSP_USING_UART6

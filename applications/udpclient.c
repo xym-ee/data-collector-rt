@@ -15,7 +15,7 @@
 
 static void udpclient_thread_entry(void *parameter)
 {
-    rt_thread_mdelay(10000);
+    rt_thread_mdelay(4000);
     
     rt_uint8_t send_data[20] = {0x55, 0x55};
     
@@ -40,8 +40,7 @@ static void udpclient_thread_entry(void *parameter)
         
     /* 总计发送count次数据 */
     while (1)
-    {
-        
+    {        
         /*----------------------------------  电压信息上报 --------------------------------*/
         send_data[2] = SMSG_ID_VOLTAGE;     /* 发送消息ID   */
         send_data[3] = 8;                   /* 发送数据长度 */
@@ -108,9 +107,6 @@ static void udpclient_thread_entry(void *parameter)
         send_data[12] = sum_check(send_data, 12);
         
         sendto(sock, send_data, 13, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));        
-        
-        
-        
         
         
         rt_thread_mdelay(1000);

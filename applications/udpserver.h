@@ -8,7 +8,8 @@
 #include <board.h>
 
 
-#define UDP_RECIVE_PORT     5501
+//MCU 开启端口5500 接收消息
+#define UDP_RECIVE_PORT     5500
 
 
 #define NETDEV_NAME "W5500"
