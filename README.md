@@ -1,7 +1,17 @@
 
 
 
+- UART1     气体传感器1
+- UART2     气体传感器2
+- UART3     测距(暂时)
+- UART4     测距(暂时)
+- UART5     SBUS
+- UART6     MSH
 
+
+- IIC3
+  - 温度传感器
+  - 
 
 
 调试记录

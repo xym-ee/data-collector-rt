@@ -14,14 +14,14 @@
 #define SBUS_THREAD_TIMESLICE        10
 
 
-#define SBUS_CH_MIN             ((rt_uint16_t)353 )
-#define SBUS_CH_OFFSET          ((rt_uint16_t)1024)
-#define SBUS_CH_MAX             ((rt_uint16_t)1695)
+#define SBUS_CH_MIN             ((rt_uint16_t)272 )
+#define SBUS_CH_OFFSET          ((rt_uint16_t)992)
+#define SBUS_CH_MAX             ((rt_uint16_t)1712)
 #define SBUS_CH_LENGTH          ((rt_uint16_t)(SBUS_CH_MAX - SBUS_CH_OFFSET))
 
-#define SBUS_SW_UP              ((rt_uint16_t)353)
-#define SBUS_SW_MID             ((rt_uint16_t)1024)
-#define SBUS_SW_DOWN            ((rt_uint16_t)1695)
+#define SBUS_SW_UP              ((rt_uint16_t)272)
+#define SBUS_SW_MID             ((rt_uint16_t)992)
+#define SBUS_SW_DOWN            ((rt_uint16_t)1712)
 
 
 /* ----------------------- Data Struct ------------------------------------- */

@@ -74,7 +74,7 @@ typedef struct {
     rt_int16_t temp;
     rt_uint16_t gas;
 
-
+    rt_uint16_t distance1;
 } seneor_t;
 
 

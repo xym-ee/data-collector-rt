@@ -390,9 +390,24 @@
               <FilePath>applications\main.c</FilePath>
             </File>
             <File>
-              <FileName>status.c</FileName>
+              <FileName>sbus.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\applications\status.c</FilePath>
+              <FilePath>.\applications\sbus.c</FilePath>
+            </File>
+            <File>
+              <FileName>distance.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\distance.c</FilePath>
+            </File>
+            <File>
+              <FileName>README.md</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\README.md</FilePath>
+            </File>
+            <File>
+              <FileName>udpserver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\udpserver.c</FilePath>
             </File>
             <File>
               <FileName>udpclient.c</FileName>
@@ -400,9 +415,9 @@
               <FilePath>.\applications\udpclient.c</FilePath>
             </File>
             <File>
-              <FileName>udpserver.c</FileName>
+              <FileName>status.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\applications\udpserver.c</FilePath>
+              <FilePath>.\applications\status.c</FilePath>
             </File>
             <File>
               <FileName>power.c</FileName>
@@ -413,16 +428,6 @@
               <FileName>light.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\applications\light.c</FilePath>
-            </File>
-            <File>
-              <FileName>iic_dev.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\iic_dev.c</FilePath>
-            </File>
-            <File>
-              <FileName>README.md</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\README.md</FilePath>
             </File>
           </Files>
         </Group>
