@@ -390,24 +390,9 @@
               <FilePath>applications\main.c</FilePath>
             </File>
             <File>
-              <FileName>sbus.c</FileName>
+              <FileName>status.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\applications\sbus.c</FilePath>
-            </File>
-            <File>
-              <FileName>distance.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\distance.c</FilePath>
-            </File>
-            <File>
-              <FileName>README.md</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\README.md</FilePath>
-            </File>
-            <File>
-              <FileName>udpserver.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\udpserver.c</FilePath>
+              <FilePath>.\applications\status.c</FilePath>
             </File>
             <File>
               <FileName>udpclient.c</FileName>
@@ -415,19 +400,54 @@
               <FilePath>.\applications\udpclient.c</FilePath>
             </File>
             <File>
-              <FileName>status.c</FileName>
+              <FileName>udpserver.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\applications\status.c</FilePath>
+              <FilePath>.\applications\udpserver.c</FilePath>
+            </File>
+            <File>
+              <FileName>README.md</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\README.md</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Devices</GroupName>
+          <Files>
+            <File>
+              <FileName>light.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\device\light.c</FilePath>
             </File>
             <File>
               <FileName>power.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\applications\power.c</FilePath>
+              <FilePath>.\applications\device\power.c</FilePath>
             </File>
             <File>
-              <FileName>light.c</FileName>
+              <FileName>sbus.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\applications\light.c</FilePath>
+              <FilePath>.\applications\device\sbus.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Sensors</GroupName>
+          <Files>
+            <File>
+              <FileName>iic_dev.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\sensor\iic_dev.c</FilePath>
+            </File>
+            <File>
+              <FileName>gas1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\sensor\gas1.c</FilePath>
+            </File>
+            <File>
+              <FileName>distance1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\sensor\distance1.c</FilePath>
             </File>
           </Files>
         </Group>

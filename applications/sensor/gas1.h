@@ -1,14 +1,9 @@
-#ifndef __SENSOR_GAS_H__
-#define __SENSOR_GAS_H__
+#ifndef __GAS1_H__
+#define __GAS1_H__
 
 #include <rtthread.h>
 #include <rtdevice.h>
 #include <board.h>
-
-
-#define GAS_SEND_PRIORITY           5
-#define GAS_SEND_STACK_SIZE         256
-#define GAS_SEND_TIMESLICE          5
 
 
 #define GAS1_UART_DEV               "uart1"

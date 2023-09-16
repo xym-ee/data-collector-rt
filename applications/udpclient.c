@@ -9,7 +9,6 @@
 #include "status.h"
 
 
-
 /*--------------------------  数据处理线程  ---------------------------*/
 
 
@@ -90,7 +89,6 @@ static void udpclient_thread_entry(void *parameter)
         sendto(sock, send_data, 13, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));
         
         
-        
         /*----------------------------------  温度上报 --------------------------------*/
         send_data[2] = SMSG_ID_TEMP;            /* 发送消息ID   */
         send_data[3] = 8;                       /* 发送数据长度 */
@@ -109,6 +107,43 @@ static void udpclient_thread_entry(void *parameter)
         sendto(sock, send_data, 13, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));        
         
         
+        /*----------------------------------  气体上报 --------------------------------*/
+        send_data[2] = SMSG_ID_GAS;             /* 发送消息ID   */
+        send_data[3] = 8;                       /* 发送数据长度 */
+        
+        send_data[4] = status.sensor.gas1 & 0xff;                     
+        send_data[5] = (status.sensor.gas1>>8)& 0xff;
+        send_data[6] = status.sensor.gas2 & 0xff;
+        send_data[7] = (status.sensor.gas2>>8)& 0xff; 
+        send_data[8] = 0;                    
+        send_data[9] = 0;                   
+        send_data[10] = 0;
+        send_data[11] = 0;
+        
+        send_data[12] = sum_check(send_data, 12);
+        
+        sendto(sock, send_data, 13, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));
+
+
+        /*----------------------------------  测距上报 --------------------------------*/
+        send_data[2] = SMSG_ID_DISTANCE;        /* 发送消息ID   */
+        send_data[3] = 8;                       /* 发送数据长度 */
+        
+        send_data[4] = status.sensor.distance1 & 0xff;                     
+        send_data[5] = (status.sensor.distance1>>8)& 0xff;
+        send_data[6] = status.sensor.distance2 & 0xff;
+        send_data[7] = (status.sensor.distance2>>8)& 0xff; 
+        send_data[8] = status.sensor.distance3 & 0xff;                    
+        send_data[9] = (status.sensor.distance3>>8)& 0xff;                   
+        send_data[10] = 0;
+        send_data[11] = 0;
+        
+        send_data[12] = sum_check(send_data, 12);
+        
+        sendto(sock, send_data, 13, 0, (struct sockaddr *)&server_addr, sizeof(struct sockaddr));
+
+
+
         rt_thread_mdelay(1000);
     }
     

@@ -147,8 +147,8 @@
 
 /* WIZnet network configure */
 
-#define WIZ_IPADDR "10.0.0.55"
-#define WIZ_GWADDR "10.0.0.1"
+#define WIZ_IPADDR "192.168.1.55"
+#define WIZ_GWADDR "192.168.1.1"
 #define WIZ_MSKADDR "255.255.255.0"
 #define WIZ_USING_PING
 #define PKG_USING_WIZNET_LATEST_VERSION

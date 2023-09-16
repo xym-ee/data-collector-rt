@@ -1,6 +1,5 @@
-#include "sensor_gas.h"
+#include "sensor/gas1.h"
 #include "status.h"
-
 
 
 /*
@@ -83,13 +82,13 @@ static void gas1_rx_thread(void *parameter)
             {
                 if (data_count >= 10) 
                 {
-                    status.sensor.gas =  (byte[4]<<8 | byte[5]);
+                    status.sensor.gas1 =  (byte[4]<<8 | byte[5]);
                     
-                    for (int i=0; i<data_count; i++)
-                    {
-                        rt_kprintf("%02x ", rx_buffer[i]);
-                    }
-                    rt_kprintf("\n");
+//                    for (int i=0; i<data_count; i++)
+//                    {
+//                        rt_kprintf("%02x ", rx_buffer[i]);
+//                    }
+//                    rt_kprintf("\n");
 
                     
                     data_count = 0;
@@ -104,7 +103,7 @@ static void gas1_rx_thread(void *parameter)
 }
 
 /*----------------------------- 线程启动 -----------------------------*/
-int gas_start(void)
+int gas1_start(void)
 {
     rt_err_t ret = RT_EOK;
     
@@ -158,7 +157,7 @@ int gas_start(void)
     return ret;
 }
 
-INIT_APP_EXPORT(gas_start);
+INIT_APP_EXPORT(gas1_start);
 
 
 

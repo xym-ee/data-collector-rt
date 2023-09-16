@@ -23,7 +23,6 @@ static void udpserver_thread_entry(void *parameter)
 {
     rt_thread_mdelay(4000);
     
-    
     int sock;
     int bytes_read;
     char *recv_data;

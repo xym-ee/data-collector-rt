@@ -1,4 +1,4 @@
-#include "power.h"
+#include "device/power.h"
 #include "status.h"
 
 

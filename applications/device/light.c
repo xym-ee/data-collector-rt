@@ -1,4 +1,5 @@
-#include "light.h"
+#include "device/light.h"
+
 #include "status.h"
 
 

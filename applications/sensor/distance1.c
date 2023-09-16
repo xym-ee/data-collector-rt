@@ -1,4 +1,4 @@
-#include "distance.h"
+#include "sensor/distance1.h"
 
 #include "status.h"
 
@@ -22,7 +22,7 @@ static struct rt_messagequeue rx_mq;
 /*--------------------------  DMA中断回调  ---------------------------*/
 
 /* 接收数据回调函数 */
-static rt_err_t sbus_uart_input(rt_device_t dev, rt_size_t size)
+static rt_err_t distance1_uart_input(rt_device_t dev, rt_size_t size)
 {
     struct rx_msg msg;
     rt_err_t result;
@@ -40,7 +40,7 @@ static rt_err_t sbus_uart_input(rt_device_t dev, rt_size_t size)
 
 /*--------------------------  数据处理线程  ---------------------------*/
 
-static void sbus_thread_entry(void *parameter)
+static void distance1_thread_entry(void *parameter)
 {
     struct rx_msg msg;
     rt_err_t result;
@@ -76,14 +76,14 @@ static void sbus_thread_entry(void *parameter)
                 /* 满足帧头才判断帧长 */
                 if (data_count >= 9) 
                 {
-                    for (int i=0; i<9; i++)
-                        rt_kprintf("%02x ", byte[i]);
-                    rt_kprintf("\n");
+//                    for (int i=0; i<9; i++)
+//                        rt_kprintf("%02x ", byte[i]);
+//                    rt_kprintf("\n");
                     
                     
                     status.sensor.distance1 = byte[3] << 8 | byte[2];
                     
-                    rt_kprintf("%d\n", status.sensor.distance1);
+//                    rt_kprintf("%d\n", status.sensor.distance1);
 
                     
                     /* 准备下一数据帧接收 */
@@ -111,10 +111,10 @@ int dis1_init(void)
     config.stop_bits = STOP_BITS_1;
     
     /* 查找串口设备 */
-    serial = rt_device_find(SBUS_UART);
+    serial = rt_device_find(DISTANCE1_UART);
     if (!serial)
     {
-        rt_kprintf("find %s failed!\n", SBUS_UART);
+        rt_kprintf("find %s failed!\n", DISTANCE1_UART);
         return RT_ERROR;
     }
 
@@ -132,14 +132,15 @@ int dis1_init(void)
     rt_device_open(serial, RT_DEVICE_FLAG_DMA_RX);
     
     /* 设置接收回调函数 */
-    rt_device_set_rx_indicate(serial, sbus_uart_input);
+    rt_device_set_rx_indicate(serial, distance1_uart_input);
 
     /* 创建 serial 线程 */
     rt_thread_t thread = rt_thread_create("dis1", 
-                                        sbus_thread_entry, 
+                                        distance1_thread_entry, 
                                         RT_NULL, 
-                                        SBUS_THREAD_STACK_SIZE, 
-                                        SBUS_THREAD_PRIORITY, SBUS_THREAD_TIMESLICE);
+                                        DISTANCE1_THREAD_STACK_SIZE, 
+                                        DISTANCE1_THREAD_PRIORITY, 
+                                        DISTANCE1_THREAD_TIMESLICE);
     
     /* 创建成功则启动线程 */
     if (thread != RT_NULL)

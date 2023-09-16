@@ -72,9 +72,13 @@ typedef struct {
 
 typedef struct {
     rt_int16_t temp;
-    rt_uint16_t gas;
+    
+    rt_uint16_t gas1;
+    rt_uint16_t gas2;
 
-    rt_uint16_t distance1;
+    rt_uint16_t distance1;      /* 单位 cm */
+    rt_uint16_t distance2;
+    rt_uint16_t distance3;
 } seneor_t;
 
 

@@ -39,12 +39,13 @@
 #define CONVERT_BITS            (1 << 12)   /* 转换位数为12位 */
 
 
-
 #define CHANNEL_OUT_24V         5
 #define CHANNEL_LED_18V         4
 #define CHANNEL_CAM_12V         0
 #define CHANNEL_PC_12V          1
 #define CHANNEL_OUT_5V          11
+
+
 
 #define K_OUT_24V               (REFER_VOLTAGE*(11.0f + 1.5f)/1.5f/CONVERT_BITS)
 #define K_LED_18V               (REFER_VOLTAGE*(12.0f + 1.5f)/1.5f/CONVERT_BITS)
