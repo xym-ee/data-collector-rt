@@ -9,7 +9,7 @@
 #define DISTANCE1_UART       "uart3"
 
 
-#define DISTANCE1_THREAD_PRIORITY         3
+#define DISTANCE1_THREAD_PRIORITY         5
 #define DISTANCE1_THREAD_STACK_SIZE       1024
 #define DISTANCE1_THREAD_TIMESLICE        10
 

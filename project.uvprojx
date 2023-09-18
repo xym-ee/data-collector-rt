@@ -54,7 +54,7 @@
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
-          <BrowseInformation>0</BrowseInformation>
+          <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\build\keil\List\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
@@ -440,14 +440,19 @@
               <FilePath>.\applications\sensor\iic_dev.c</FilePath>
             </File>
             <File>
+              <FileName>iic_distance.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\applications\sensor\iic_distance.c</FilePath>
+            </File>
+            <File>
               <FileName>gas1.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\applications\sensor\gas1.c</FilePath>
             </File>
             <File>
-              <FileName>distance1.c</FileName>
+              <FileName>gas2.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\applications\sensor\distance1.c</FilePath>
+              <FilePath>.\applications\sensor\gas2.c</FilePath>
             </File>
           </Files>
         </Group>

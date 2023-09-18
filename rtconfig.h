@@ -6,7 +6,7 @@
 
 /* RT-Thread Kernel */
 
-#define RT_NAME_MAX 8
+#define RT_NAME_MAX 16
 #define RT_ALIGN_SIZE 4
 #define RT_THREAD_PRIORITY_32
 #define RT_THREAD_PRIORITY_MAX 32
@@ -58,7 +58,7 @@
 #define RT_USING_COMPONENTS_INIT
 #define RT_USING_USER_MAIN
 #define RT_MAIN_THREAD_STACK_SIZE 2048
-#define RT_MAIN_THREAD_PRIORITY 10
+#define RT_MAIN_THREAD_PRIORITY 6
 #define RT_USING_MSH
 #define RT_USING_FINSH
 #define FINSH_USING_MSH
@@ -108,8 +108,7 @@
 /* Network */
 
 #define RT_USING_SAL
-#define SAL_INTERNET_CHECK
-#define SAL_SOCKETS_NUM 16
+#define SAL_SOCKETS_NUM 8
 #define RT_USING_NETDEV
 #define NETDEV_USING_IFCONFIG
 #define NETDEV_USING_PING
@@ -147,8 +146,8 @@
 
 /* WIZnet network configure */
 
-#define WIZ_IPADDR "192.168.1.55"
-#define WIZ_GWADDR "192.168.1.1"
+#define WIZ_IPADDR "192.168.144.55"
+#define WIZ_GWADDR "192.168.144.1"
 #define WIZ_MSKADDR "255.255.255.0"
 #define WIZ_USING_PING
 #define PKG_USING_WIZNET_LATEST_VERSION

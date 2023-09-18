@@ -6,7 +6,7 @@
 #include <board.h>
 
 
-#define GAS2_UART_DEV               "uart1"
+#define GAS2_UART_DEV               "uart2"
 
 #define GAS2_RX_PRIORITY           5
 #define GAS2_RX_STACK_SIZE         256

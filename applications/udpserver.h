@@ -16,7 +16,7 @@
 
 
 #define     UDPSERVER_THREAD_STACK_SIZE     2048
-#define     UDPSERVER_THREAD_PRIORITY       16
+#define     UDPSERVER_THREAD_PRIORITY       0
 #define     UDPSERVER_THREAD_TIMESLICE      10
 
 

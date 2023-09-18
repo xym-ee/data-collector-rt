@@ -7,14 +7,13 @@
 #include <board.h>
 
 //MCU连接服务器 5501 端口发送消息
-#define     UDP_SERVER_IP                   "192.168.1.111"
+#define     UDP_SERVER_IP                   "192.168.144.115"
 #define     UDP_SERVER_PORT                 5501
 
 
 #define     UDPCLIENT_THREAD_STACK_SIZE     2048
-#define     UDPCLIENT_THREAD_PRIORITY       16
+#define     UDPCLIENT_THREAD_PRIORITY       0
 #define     UDPCLIENT_THREAD_TIMESLICE      10
-
 
 
 typedef enum{

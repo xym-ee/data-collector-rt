@@ -9,7 +9,7 @@
 
 
 #define     LIGHT_THREAD_STACK_SIZE   512
-#define     LIGHT_THREAD_PRIORITY     16
+#define     LIGHT_THREAD_PRIORITY     1
 #define     LIGHT_THREAD_TIMESLICE    10
 
 

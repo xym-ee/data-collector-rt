@@ -33,9 +33,9 @@ int main(void)
         rt_kprintf("{%d %d %d %d ", status.light.light7, status.light.light6,status.light.light5, status.light.light4);
         rt_kprintf("%d %d %d %d} level{%d}\n", status.light.light3, status.light.light2,status.light.light1, status.light.light0,status.light.level);    
     
-        rt_kprintf("gas concentration: {%d.%01dppm}\n", status.sensor.gas1/10, status.sensor.gas1%10);
+        rt_kprintf("gas concentration: {%d.%01dppm} {%d.%01dppm}\n", status.sensor.gas1/10, status.sensor.gas1%10, status.sensor.gas2/10, status.sensor.gas2%10);
         
-        rt_kprintf("distance: {%dcm}\n", status.sensor.distance1);
+        rt_kprintf("distance: {%dcm} {%dcm} {%dcm}\n", status.sensor.distance1, status.sensor.distance2, status.sensor.distance3);
         
     
         rt_thread_mdelay(1000);
