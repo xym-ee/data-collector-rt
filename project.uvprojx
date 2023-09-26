@@ -395,16 +395,6 @@
               <FilePath>.\applications\status.c</FilePath>
             </File>
             <File>
-              <FileName>udpclient.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\udpclient.c</FilePath>
-            </File>
-            <File>
-              <FileName>udpserver.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\udpserver.c</FilePath>
-            </File>
-            <File>
               <FileName>README.md</FileName>
               <FileType>5</FileType>
               <FilePath>.\README.md</FilePath>
@@ -413,48 +403,9 @@
         </Group>
         <Group>
           <GroupName>Devices</GroupName>
-          <Files>
-            <File>
-              <FileName>light.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\device\light.c</FilePath>
-            </File>
-            <File>
-              <FileName>power.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\device\power.c</FilePath>
-            </File>
-            <File>
-              <FileName>sbus.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\device\sbus.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>Sensors</GroupName>
-          <Files>
-            <File>
-              <FileName>iic_dev.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\sensor\iic_dev.c</FilePath>
-            </File>
-            <File>
-              <FileName>iic_distance.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\sensor\iic_distance.c</FilePath>
-            </File>
-            <File>
-              <FileName>gas1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\sensor\gas1.c</FilePath>
-            </File>
-            <File>
-              <FileName>gas2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\applications\sensor\gas2.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>Compiler</GroupName>

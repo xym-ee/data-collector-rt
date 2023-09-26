@@ -916,7 +916,7 @@ int wiz_init(void)
 
     /* I think you can attach w5500 into spi bus at here. You can use this function to realize.*/
     extern rt_err_t rt_hw_spi_device_attach(const char *bus_name, const char *device_name, GPIO_TypeDef *cs_gpiox, uint16_t cs_gpio_pin);
-    rt_hw_spi_device_attach("spi2", "spi20", GPIOB, GPIO_PIN_12);
+    rt_hw_spi_device_attach("spi1", "spi10", GPIOD, GPIO_PIN_7);
 
     /* WIZnet SPI device and pin initialize */
     result = wiz_device_init(WIZ_SPI_DEVICE);
