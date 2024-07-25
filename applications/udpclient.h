@@ -7,7 +7,7 @@
 #include <board.h>
 
 //MCU连接服务器 5501 端口发送消息
-#define     UDP_SERVER_IP                   "192.168.144.115"
+#define     UDP_SERVER_IP                   "10.0.0.10"
 #define     UDP_SERVER_PORT                 5501
 
 
